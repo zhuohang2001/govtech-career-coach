@@ -49,7 +49,7 @@ def test_analyze_ratings(monkeypatch):
 
     # Check if the DataFrame is structured as expected
     print(df, "df")
-    assert df.shape == (3, 5)  # Should have 3 categories with one column for ratings
+    assert df.shape == (3, 5)
     assert 'Excellent' in df.columns  # Ensure the "Excellent" category is present
     assert 'Good' in df.columns      # Ensure the "Good" category is present
     
