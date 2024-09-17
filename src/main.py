@@ -3,6 +3,10 @@ from analyze_ratings import analyze_ratings
 from utils import save_to_csv
 
 def main():
+    """
+    Main script to extract, analyze, and save restaurant data and events.
+    """
+
     # Define URL and file paths
     restaurant_json_url = "https://raw.githubusercontent.com/Papagoat/brain-assessment/main/restaurant_data.json"
     country_excel_file = "../data/Country-Code.xlsx"

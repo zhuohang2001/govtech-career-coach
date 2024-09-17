@@ -26,6 +26,11 @@ mock_country_code = pd.DataFrame({
 
 # Test for extract_restaurant_details function
 def test_extract_restaurant_details(monkeypatch):
+    """
+    Test that the extract_restaurant_details function correctly processes
+    restaurant data and matches it with the country codes from the Excel file.
+    """
+
     # Mock the response of requests.get and pd.read_excel
     def mock_get(*args, **kwargs):
         class MockResponse:

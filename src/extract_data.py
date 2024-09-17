@@ -3,6 +3,17 @@ import requests
 import json
 
 def extract_restaurant_details(json_url, excel_file):
+    """
+    Extract restaurant details from JSON and match with country codes from Excel.
+
+    Args:
+        json_url (str): URL of the JSON file containing restaurant data.
+        excel_file (str): Path to the Excel file containing country codes.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing detailed restaurant information.
+    """
+
     response = requests.get(json_url)
     restaurant_data = response.json()  # Parse the JSON data from the URL
     
