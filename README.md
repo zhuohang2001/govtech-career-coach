@@ -157,3 +157,63 @@ Below is a textual description of the architecture diagram.
    - **AWS CloudWatch**: Monitor the performance of Lambda, API Gateway, and other AWS services.
    - **IAM Roles**: Secure access to resources.
    - **VPC (Virtual Private Cloud)**: Optional, to ensure private networking and additional security for sensitive data.
+
+
++------------------------------------------------------+
+|                   Amazon S3 (Data Storage)           |
+|  - Country-Code.xlsx                                  |
+|  - Restaurant Data (JSON)                             |
+|  - Processed CSV files                                |
++------------------------------------------------------+
+                           ^
+                           |
+                           |
+                    +-------------------+
+                    |    AWS Lambda     |
+                    |  - Fetch data     |
+                    |  - Process data   |
+                    |  - Store results  |
+                    +-------------------+
+                           ^
+                           |
+                           |
+                    +--------------------+
+                    |    API Gateway     |
+                    |  - Ingest data     |
+                    +--------------------+
+                           |
+                           v
+                    +-------------------+
+                    |   Optional ETL    |
+                    | +---------------+ |
+                    | |  AWS Glue      | |
+                    | | - ETL tasks    | |
+                    +-------------------+
+                           |
+                           v
+              +-------------------------------+
+              |         Optional Storage       |
+              | +---------------------------+  |
+              | |       Amazon RDS          |  |
+              | | - Store structured data   |  |
+              +-------------------------------+
+                           |
+                           v
+              +-------------------------------+
+              |       Amazon Athena           |
+              | - Query processed data (SQL)  |
+              +-------------------------------+
+                           |
+                           v
+              +-------------------------------+
+              |     Amazon QuickSight          |
+              |  - Reports and Dashboards      |
+              +-------------------------------+
+
+        +-------------------------------------------------+
+        |        Monitoring and Security                  |
+        |  +-------------------------------------------+  |
+        |  | AWS CloudWatch: Monitor performance       |  |
+        |  | IAM Roles: Secure access control          |  |
+        |  | VPC (Optional): Private networking        |  |
+        +-------------------------------------------------+
