@@ -53,13 +53,13 @@ def extract_event_data(json_url):
                     photo_url = event["photos"][0]["photo"]["url"] if event.get("photos") else "No Photo"
                     if (start_date <= pd.Timestamp('2019-04-30')) and (end_date >= pd.Timestamp('2019-04-01')):
                         event_details.append({
-                            'Event Id': event['event_id'],
-                            'Restaurant Id': restaurant["R"]["res_id"],
-                            'Restaurant Name': restaurant['name'],
-                            'Photo URL': photo_url,
-                            'Event Title': event['title'],
-                            'Event Start Date': event['start_date'],
-                            'Event End Date': event['end_date']
+                            'Event Id': event['event_id'] if event['event_id'] else "NA",
+                            'Restaurant Id': restaurant["R"]["res_id"] if restaurant["R"]["res_id"] else "NA",
+                            'Restaurant Name': restaurant['name'] if restaurant['name'] else "NA",
+                            'Photo URL': photo_url if photo_url else "NA",
+                            'Event Title': event['title'] if event['title'] else "NA",
+                            'Event Start Date': event["start_date"] if event["start_date"] else "NA",
+                            'Event End Date': event["end_date"] if event["end_date"] else "NA"
                         })
 
     return pd.DataFrame(event_details)
